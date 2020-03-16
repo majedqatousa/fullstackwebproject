@@ -1,21 +1,105 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" [routerLink]="['']">
+       {{ title }}</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a [routerLink]="['dashboard']">Dashbord</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['cars']">Cars</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['employee']">Employees</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['report']">Report</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li routerLinkActive="active"><a [routerLink]="['register']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li routerLinkActive="active"><a [routerLink]="['login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
 
-<router-outlet></router-outlet>
+<div class="container">
+
+  <router-outlet></router-outlet>
+  <!-- Our page is here -->
+</div><!-- /.container -->
+<footer class="mainfooter" role="contentinfo">
+    <div class="footer-middle">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <!--Column1-->
+          <div class="footer-pad">
+            <h4>Company
+             </h4>
+            <ul class="list-unstyled">
+              <li><a href="#"></a></li>
+              <li><a href="#">Payment Center</a></li>
+              <li><a href="#">Contact Directory</a></li>
+              <li><a href="#">Forms</a></li>
+              <li><a href="#">News and Updates</a></li>
+              <li><a href="#">FAQs</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <!--Column1-->
+          <div class="footer-pad">
+            <h4>Employees & Functions 
+            </h4>
+            <ul class="list-unstyled">
+              <li><a href="#">Website Tutorial</a></li>
+              <li><a href="#">Accessibility</a></li>
+              <li><a href="#">Disclaimer</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Webmaster</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <!--Column1-->
+          <div class="footer-pad">
+            <h4>Cars</h4>
+            <ul class="list-unstyled">
+              <li><a href="#">Parks and Recreation</a></li>
+              <li><a href="#">Public Works</a></li>
+              <li><a href="#">Police Department</a></li>
+              <li><a href="#">Fire</a></li>
+              <li><a href="#">Mayor and City Council</a></li>
+              <li>
+                <a href="#"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h4>Follow Us</h4>
+              <ul class="social-network social-circle">
+               <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook">F</i></a></li>
+               <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin">ln</i></a></li>
+               <li><a href="#" class="icoYoutube" title="Youtube"><i class="fa fa-linkedin"style="font-size:8px;">Youtube</i></a></li>
+               <li><a href="#" class="icoGoogle" title="Goolge"><i class="fa fa-linkedin">G+</i></a></li>
+               
+              </ul>				
+      </div>
+      </div>
+    <div class="row">
+      <div class="col-md-12 copy">
+        <p class="text-center">&copy; Copyright 2018 - Company Name.  All rights reserved.</p>
+      </div>
+    </div>
+  
+  
+    </div>
+    </div>
+  </footer>
+
+

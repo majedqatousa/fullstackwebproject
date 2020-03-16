@@ -1,0 +1,56 @@
+
+<div class="row">
+  <div class="col-md-8">
+
+      <H1>Car Report</H1>
+
+      <table class="table table-hover">
+        <tr>
+          <td>Oldest Car</td>
+          <td>{{ oldestCar?.brand }} - {{ oldestCar?.model }} / {{ oldestCar?.year }}</td>
+        </tr>
+        <tr>
+          <td>Most Used Car</td>
+          <td>{{ mostUsedCar?.brand }} - {{ mostUsedCar?.model }} / {{ mostUsedCar?.km }} km</td>
+        </tr>
+        <tr>
+          <td>Most Fuel Efficient</td>
+          <td>{{ mostFuelEfficient?.brand }} - {{ mostFuelEfficient?.model }} / {{ mostFuelEfficient?.engine.consumption }} l/100km</td>
+        </tr>
+        <tr>
+            <td>Most Expensive Car</td>
+            <td>{{ mostExpensive?.brand }} - {{ mostExpensive?.model }} / {{ mostExpensive?.price | currency:' NIC ' }}</td>
+          </tr>
+        <tr>
+          <td>Total Value of Cars</td>
+          <td>{{ totalValue | currency:' NIC ' }}</td>
+        </tr>
+
+   
+          <H1>Employees Report</H1>
+
+              <tr>
+                <td>Total Staff</td>
+                <td>{{ totalStaff }} Employees</td>
+              </tr>
+              <tr>
+                <td>Total Salaries</td>
+                <td>{{ totalSalaries }} NIC</td>
+              </tr>
+              <tr>
+                <td>Most experience Employee </td>
+                <td>{{ mostXP?.name }} - {{ mostXP?.experience }} XP</td>
+              </tr>
+      
+            </table>
+
+
+
+      
+          </div>
+        </div>
+
+
+
+
+

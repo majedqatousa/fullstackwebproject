@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-md-7 col-centered">
+    <form class="user-form" autocomplete="off" #registerForm="ngForm" (change)="debug(registerForm)"
+      (ngSubmit)="processForm(registerForm.value);">
+      <fieldset>
+        <legend>Acount inforamtion</legend>
+
+
+        <div class="form-group col-md-6">
+
+          <input placeholder="ُEnter your name " class="form-control" required type="text" minlength="3" maxlength="25"
+            [(ngModel)]="user.name" #fullname="ngModel" id="fullname" name="fullname">
+          <div *ngIf="fullname.invalid && (fullname.tuched || fullname.dirty)">
+            <p class="text-danger" *ngIf="fullname.errors.required">Value is required</p>
+            <p class="text-danger" *ngIf="fullname.errors.maxlength">Max length is
+              {{ fullname.errors.maxlength.requiredLength }}
+              chars </p>
+            <p class="text-danger" *ngIf="fullname.errors.minlength">Min length is
+              {{ fullname.errors.minlength.requiredLength }}
+              chars </p>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+
+          <input placeholder="Enter username" class="form-control" required type="text" [(ngModel)]="user.username"
+            #username="ngModel" id="username" name="username">
+          <div *ngIf="username.invalid && (username.tuched || username.dirty)">
+            <p class="text-danger" *ngIf="username.errors.required">Value is required</p>
+          </div>
+        </div>
+
+        <div class="form-group col-md-12">
+          <input placeholder="Enter your email ex@ex.ex" class="form-control" required email type="email"
+            [(ngModel)]="user.email" #email="ngModel" id="email" name="email">
+          <div *ngIf="email.invalid && (email.tuched || email.dirty)">
+            <p class="text-danger" *ngIf="email.errors.required">Value is required</p>
+            <p class="text-danger" *ngIf="email.errors?.email">email is not valied</p>
+            
+          </div>
+        </div>
+        <div class="form-group col-md-12">
+          <input placeholder="Enter your password " class="form-control" minlength="8" required type="password"
+            [(ngModel)]="user.password" #password="ngModel" id="password" name="password">
+          <div *ngIf="password.invalid && (password.tuched || password.dirty)">
+            <p class="text-danger" *ngIf="password.errors.required">Value is required</p>
+            <p class="text-danger" *ngIf="password.errors.minlength">password need to be {{password.errors.minlength.requiredLength }} chars at lest</p>
+            
+          </div>
+        </div>
+        <div class="col-md-12 text-center">
+          <div class="btn-grup">
+            <button class="btn btn- btn-login" [disabled]="registerForm.invalid" type="submit">Sige Up</button>
+          </div>
+          <p>You have an acount ? <a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+          </p>
+        </div>
+      </fieldset>
+
+    </form>
+  </div>
+</div>

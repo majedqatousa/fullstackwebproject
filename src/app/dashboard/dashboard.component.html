@@ -1,0 +1,74 @@
+
+   
+        <div class="jumbotron jumbotron-cover-image">
+            <h2>German Automotive Company</h2>
+            <p>The first company in Palestine to trade German cars</p>
+            <p><a class="main-btn" routerLink="/cars" role="button">Cars System</a></p>
+          </div>
+ 
+<div class="row">
+  <div class="col-md-2">
+      <div [@photosAnimation]="photos.length">
+          <div  *ngFor="let photo of photos">
+              <img class = "brands-logo" [src]="photo.url" >
+          </div>
+      </div>
+  </div>
+
+      <div class="col-md-4">
+          <div class="list-group">
+              <a routerLink="/cars" class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">German Automotive Company - Cars</h5>
+                  <small>3 days ago</small>
+                </div>
+                <p class="mb-1">any text discription for this  div 
+                    any text discription for this  div 
+                    any text discription for this  div 
+                    any text discription for this  div .
+                </p>
+                <small>any text discription for this  div .</small>
+              </a>
+              <a routerLink="/report" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">German Automotive Company - Sales</h5>
+                  <small class="text-muted">1 days ago</small>
+                </div>
+                <p class="mb-1">Donec id elit non mi porta. 
+                    any text discription for this  div 
+                    any text discription for this  div 
+                    any text discription for this  div .</p>
+                <small class="text-muted">Donec id elit non mi porta.</small>
+              </a>
+              <a routerLink="/employee" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">German Automotive Company - Employees</h5>
+                  <small class="text-muted">28 days ago</small>
+                </div>
+                <p class="mb-1">any text discription for this  div 
+                    any text discription for this  div 
+                    any text discription for this  div 
+                    any text discription for this  div .</p>
+                <small class="text-muted">Donec id elit non mi porta.</small>
+              </a>
+            </div>
+
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div *ngFor="let car of cars" class="col-md-6">
+          <div class="thumbnail">
+              <img [src]="car.url" alt="...">
+              <div class="caption">
+                <h3>{{car.brand}} - {{car.model}}</h3>
+                <p>{{car.model}} - {{car.year}} come whith price {{car.price}} The car has passed a distance {{car.km}} KM . and it have an {{car.engine.fuel}} engine with power {{car.engine.power}} h  - with consumption  {{car.engine.consumption}} </p>
+                <p class="text-center"><a href="#" style ="margin-right: 5px;" class="btn btn-warning" role="button">Buy </a> <a href="#" class="btn btn-danger" role="button">Rent</a></p>
+              </div>
+            </div>
+      </div>
+
+    </div>
+
+  </div>
+  
+</div>

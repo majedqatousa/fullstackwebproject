@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-md-5">
+    <form class="main-form" autocomplete="off" #employeeForm="ngForm" 
+      (ngSubmit)="processForm(employeeForm.value); employeeForm.reset();">
+      <fieldset>
+        <legend>Employee information : </legend>
+        <div class="form-group col-md-10">
+          <input type="hidden" [(ngModel)]="employee.id" name="id">
+          <label for="brand">Name : </label>
+          <input class="form-control" name="name" type="text" required [(ngModel)]="employee.name"
+            #name="ngModel" id="name">
+
+          <div *ngIf="name.invalid && (name.tuched || name.dirty)">
+            <p class="text-danger" *ngIf="name.errors.required">Value is required</p>
+          </div>
+        </div>
+
+        <div class="form-group col-md-10">
+          <label for="model">Jop : </label>
+          <input class="form-control" name="jop" type="text" required [(ngModel)]="employee.jop"
+          #jop="ngModel" id="jop">
+
+          <div *ngIf="jop.invalid && (jop.tuched || jop.dirty)">
+          <p class="text-danger" *ngIf="jop.errors.required">Value is required</p>
+          </div>
+        </div>
+
+        <div class="form-group col-md-10">
+          <label for="price">Jop description : </label>
+          <input class="form-control" required type="text" [(ngModel)]="employee.jopDescription"
+            #jopDescription="ngModel" id="jopDescription" name="jopDescription">
+          <div *ngIf="jopDescription.invalid && (jopDescription.tuched || jopDescription.dirty)">
+            <p class="text-danger" *ngIf="jopDescription.errors.required">Value is required</p>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="salary">Salary : </label>
+          <input class="form-control" required type="number" [(ngModel)]="employee.salary" #salary="ngModel" id="salary"
+            name="salary">
+          <div *ngIf="salary.invalid && (salary.tuched || salary.dirty)">
+            <p class="text-danger" *ngIf="salary.errors.required">Value is required</p>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="experience">Experience : </label>
+          <input class="form-control" required [(ngModel)]="employee.experience" type="number" #experience="ngModel"
+            id="experience" name="experience">
+          <div *ngIf="experience.invalid && (experience.tuched || experience.dirty)">
+            <p class="text-danger" *ngIf="experience.errors.required">Value is required</p>
+          </div>
+        </div>
+      </fieldset>
+
+
+      <div class="btn-group">
+        <button class="btn btn-primary" [disabled]="employeeForm.invalid" type="submit">Add employee</button>
+        <button class="btn btn-danger " type="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-7">
+      <app-add-employee (update)="getEmployees()"></app-add-employee>
+  </div>
+  
+  
+</div>

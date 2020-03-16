@@ -1,0 +1,150 @@
+<form class="main-form" autocomplete="off" #form="ngForm" (change)="debug(form)"
+  (ngSubmit)="processForm(form.value); form.reset();">
+  <fieldset>
+    <legend>General information : </legend>
+    <div class="form-group col-md-6">
+      <input type="hidden" [(ngModel)]="car.id" name="id">
+      <label for="brand">Brand : </label>
+      <select class="form-control" name="brand" required [(ngModel)]="car.brand" #brand="ngModel" id="brand">
+        <option value="" disabled>--Select--</option>
+        <option *ngFor="let brand of brands" [value]="brand.name">{{brand.name}}</option>
+      </select>
+      <div *ngIf="brand.invalid && (brand.tuched || brand.dirty)">
+        <p class="text-danger" *ngIf="brand.errors.required">Value is required</p>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="model">Model : </label>
+      <input class="form-control" required type="text" minlength="2" maxlength="50" [(ngModel)]="car.model"
+        #model="ngModel" id="model" name="model">
+      <div *ngIf="model.invalid && (model.tuched || model.dirty)">
+        <p class="text-danger" *ngIf="model.errors.required">Value is required</p>
+        <p class="text-danger" *ngIf="model.errors.maxlength">Max length is {{ model.errors.maxlength.requiredLength }}
+          chars </p>
+        <p class="text-danger" *ngIf="model.errors.minlength">Min length is {{ model.errors.minlength.requiredLength }}
+          chars </p>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="price">Price : </label>
+      <input class="form-control" required type="number" [(ngModel)]="car.price" #price="ngModel" id="price"
+        name="price">
+      <div *ngIf="price.invalid && (price.tuched || price.dirty)">
+        <p class="text-danger" *ngIf="price.errors.required">Value is required</p>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="km">KM : </label>
+      <input class="form-control" required type="number" [(ngModel)]="car.km" #km="ngModel" id="km" name="km">
+      <div *ngIf="km.invalid && (km.tuched || km.dirty)">
+        <p class="text-danger" *ngIf="km.errors.required">Value is required</p>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="year">Year : </label>
+      <input class="form-control" required [(ngModel)]="car.year" type="number" #year="ngModel" id="year" name="year">
+      <div *ngIf="year.invalid && (year.tuched || year.dirty)">
+        <p class="text-danger" *ngIf="year.errors.required">Value is required</p>
+      </div>
+    </div>
+  </fieldset>
+
+
+  <fieldset ngModelGroup="engine">
+    <legend>Engine inforamtion : </legend>
+
+    <div class="form-group col-md-12">
+      <label for="fuel">Fuel : </label>
+      <select class="form-control" name="fuel" required [(ngModel)]="car.engine.fuel" #fuel="ngModel" id="fuel">
+        <option value="">--Select--</option>
+        <option value="petrol">Petrol</option>
+        <option value="diesel">Diesel</option>
+        <option value="elictric">Elictric</option>
+      </select>
+      <div *ngIf="fuel.invalid && (fuel.tuched || fuel.dirty)">
+        <p class="text-danger" *ngIf="fuel.errors.required">Value is required</p>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="power">Power : </label>
+      <input class="form-control" required type="number" max="200" [(ngModel)]="car.engine.power" #power="ngModel"
+        id="power" name="power">
+      <div *ngIf="power.invalid && (power.tuched || power.dirty)">
+        <p class="text-danger" *ngIf="power.errors.required">Value is required</p>
+        <p class="text-danger" *ngIf="power.errors.max">Max value have to be 200</p>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="consumption">Consumption : </label>
+      <input class="form-control" required type="number" max="20" [(ngModel)]="car.engine.consumption"
+        #consumption="ngModel" id="consumption" name="consumption">
+      <div *ngIf="consumption.invalid && (consumption.tuched || consumption.dirty)">
+        <p class="text-danger" *ngIf="consumption.errors.required">Value is required</p>
+        <p class="text-danger" *ngIf="consumption.errors.max">Max value have to be 20</p>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="btn-group">
+    <button class="btn btn-primary m-l-20" [disabled]="form.invalid"
+      type="submit">{{isAddAction(car.id)?'Add Car' : 'Edit Car'}}</button>
+    <button class="btn btn-danger m-l-20 " type="reset">Reset</button>
+  </div>
+
+
+</form>
+
+<!-- {{form.value | json }} -->
+
+
+<form class="main-form" autocomplete="off" #form2="ngForm" (change)="debug(form2)"
+  (ngSubmit)="processForm2(form2.value); form2.reset();">
+  <fieldset>
+    <legend>Brand information : </legend>
+    <div class="form-group col-md-6">
+      <input type="hidden" [(ngModel)]="brand.id" name="id">
+      <label for="name">Name : </label>
+      <input class="form-control" required type="text" minlength="3" maxlength="20" [(ngModel)]="brand.name"
+        #name="ngModel" id="name" name="name">
+      <div *ngIf="name.invalid && (name.tuched || name.dirty)">
+        <p class="text-danger" *ngIf="name.errors.required">Value is required</p>
+        <p class="text-danger" *ngIf="name.errors.maxlength">Max length is {{ name.errors.maxlength.requiredLength }}
+          chars </p>
+        <p class="text-danger" *ngIf="name.errors.minlength">Min length is {{ name.errors.minlength.requiredLength }}
+          chars </p>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="number">Number : </label>
+      <input class="form-control" required type="text" minlength="2" maxlength="5" [(ngModel)]="brand.number"
+        #number="ngModel" id="number" name="number">
+      <div *ngIf="number.invalid && (number.tuched || number.dirty)">
+        <p class="text-danger" *ngIf="number.errors.required">Value is required</p>
+        <p class="text-danger" *ngIf="number.errors.maxlength">Max length is
+          {{ number.errors.maxlength.requiredLength }} chars </p>
+        <p class="text-danger" *ngIf="number.errors.minlength">Min length is
+          {{ number.errors.minlength.requiredLength }} chars </p>
+      </div>
+    </div>
+  </fieldset>
+  <div class="btn-group">
+    <button class="btn btn-primary m-l-20" [disabled]="form2.invalid"
+      type="submit">{{isAddAction(brand.id)?'Add Brand' : 'Edit Brand'}}</button>
+    <button class="btn btn-danger m-l-20 " type="reset">Reset</button>
+  </div>
+</form>
+
+<div *ngFor="let brand of brands" class="panel panel-warning " update="getBrands()">
+  <div class="panel-heading">
+
+    {{brand.name}} - {{brand.number}}
+    <div class="pull-right">
+      <button class="btn btn-xs btn-danger" (click)="deleteBrand(brand.id)"><span class ="glyphicon glyphicon-remove"></span></button>
+    </div>
+  </div>
+</div>
